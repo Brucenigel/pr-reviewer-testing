@@ -1,5 +1,4 @@
-name: Add PR Comment
-
+name: Code Reviewer
 on:
   pull_request:
     types:
@@ -7,22 +6,10 @@ on:
       - synchronize
 
 jobs:
-  add-comment:
+  sun-ai-code-reviewer:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-      
-      - name: Add PR Comment
+      - uses: rjoliverio/sun-code-reviewer@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          PR_NUMBER="${{ github.event.pull_request.number }}"
-          COMMENT_BODY="Your comment here."
-
-          # Use the GitHub API to add a comment to the PR
-          curl -X POST \
-            -H "Authorization: token $GITHUB_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "{\"body\":\"$COMMENT_BODY\"}" \
-            "https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
+          OPENAI_API_KEY: ${{ vars.OPENAI_API_KEY }}
