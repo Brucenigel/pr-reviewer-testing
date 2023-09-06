@@ -1,3 +1,3 @@
 function multiply() {
-    return 1 * 2;
+    return 2 * 2;
 }
