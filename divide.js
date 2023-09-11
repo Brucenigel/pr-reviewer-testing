@@ -1,3 +1,3 @@
-function add() {
-  return 1 / 1;
+function divide() {
+  return 3 / 1;
 }
