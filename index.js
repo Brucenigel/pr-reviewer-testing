@@ -1,3 +1,3 @@
-function add() {
+function sub() {
   return 2 - 2;
 }
